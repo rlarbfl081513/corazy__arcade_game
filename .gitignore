@@ -1,0 +1,11 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database dumps
+*.sql
+
+# OS
+.DS_Store
+Thumbs.db

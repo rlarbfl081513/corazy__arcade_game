@@ -1,0 +1,371 @@
+* {
+  box-sizing: border-box;
+}
+
+/* 대기방 컨테이너 - 네오 브루탈리즘 스타일 */
+.waiting-room-container {
+  min-width: 0;
+  border: 2px solid #000000;
+  padding: 12px 24px;
+  border-radius: 20px;
+  background-color: var(--bg-main-color);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  flex: 1;
+}
+
+/* 상단 영역 (제목 + 버튼들) */
+.waiting-room-container .title-btn-box {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+/* 상단 버튼 영역 */
+.waiting-room-container .top-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.waiting-room-container .title-btn-box .btn {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 48px;
+ font-size: 18px;
+}
+.waiting-room-container .title-btn-box img{
+   width: 32px;
+  height: auto;
+}
+
+/* 타이틀 */
+.waiting-room-container .rooms-title-box {
+  font-size: 24px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  text-shadow:
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black;
+}
+
+.waiting-room-container .top-buttons button {
+  padding: 4px 12px;
+  border-radius: 14px;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.top-buttons button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.top-buttons button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+.btn-refresh {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.btn-create {
+  background: #FFD93D;
+  color: #000000;
+}
+
+.btn-create:hover {
+  background: #FFC700;
+}
+
+/* WebSocket 연결 상태 표시 */
+.websocket-status {
+  padding: 8px 16px;
+  border: 3px solid #000000;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.websocket-status.connected {
+  background: #43e97b;
+}
+
+/* 방 목록 섹션 */
+.rooms-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-direction: column;
+  overflow-y: auto;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.rooms-section::-webkit-scrollbar {
+  display: none; 
+}
+
+.rooms-list {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding-top: 12px;
+}
+
+/* 스크롤바 커스텀 */
+.rooms-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rooms-list::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 0;
+}
+
+.rooms-list::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+}
+
+/* 방 카드 - 네오 브루탈리즘 */
+.waiting-room-container .room-card {
+  background: #FFFFFF;
+  padding: 28px 20px 20px 20px;
+  border-radius: 0;
+  border: 3px solid #000000;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  /* box-shadow: 4px 4px 0 #000000; */
+  border-radius: 14px;
+  position: relative;
+  overflow: visible;
+
+}
+
+.room-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #000000;
+  /* background: #FFF5E1; */
+}
+
+.room-card:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0 #000000;
+}
+
+.room-card-disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+.room-card-disabled:hover {
+  transform: none;
+  box-shadow: 6px 6px 0 #000000;
+  background: #FFFFFF;
+}
+
+/* 방 헤더 */
+.room-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.title-host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mode-label {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+}
+
+.room-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.room-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.room-host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.room-status-badge {
+  padding: 6px 12px;
+  border: 3px solid #000000;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.room-img {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.room-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* 문제 정보 */
+.room-problem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #F5F5F5;
+  border: 2px solid #000000;
+}
+
+.problem-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666666;
+}
+
+.problem-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  flex: 1;
+}
+
+.room-language {
+  display: flex;
+  gap: 8px;
+}
+
+.language-badge {
+  padding: 6px 16px;
+  border-radius: 10px;
+  border: 3px solid #000000;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+}
+/* 언어별 배경색 다르게 */
+.language-badge.lang-cpp{
+  background: #D5B9E8;
+}
+.language-badge.lang-java{
+  background: #FF9E4F;
+}
+.language-badge.lang-js{
+  background: #F8D121;
+}
+.language-badge.lang-python{
+  background: #54EAED;
+}
+
+.lang-person {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.room-participants {
+  display: flex;
+  align-items: center;
+}
+
+.participants-count {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  padding: 2px 16px;
+  border-radius: 10px;
+  background: #93e4fb;
+  border: 3px solid #000000;
+}
+
+.participants-count.full {
+  color: #FF0000;
+}
+
+.msg-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 메시지 영역 */
+.loading-message,
+.error-message,
+.empty-message {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 50px;
+  border-radius: 16px;
+  background: #F9F9F9;
+  box-shadow: 0px 2px 20px #00000036;
+}
+
+.error-message {
+  color: #FF0000;
+  border: 3px solid #FF0000;
+  background: #FFE5E5;
+  padding: 20px;
+}
+
+.empty-message {
+  /* color: #fff; */
+  /* border: 3px dashed #CCCCCC; */
+  
+  padding: 40px;
+  line-height: 1.6;
+}

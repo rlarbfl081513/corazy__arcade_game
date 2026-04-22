@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build: .
+    image: corazyarcade-frontend
+    container_name: corazyarcade-frontend
+    restart: unless-stopped
+    
+    ports:
+      - "80:80"
+      - "443:443"
+    
+    volumes:
+      # SSL 인증서
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      
+      # Nginx 로그 (추가 볼륨에 저장)
+      - /mnt/logs/nginx:/var/log/nginx
+      
+      # Nginx 캐시 (추가 볼륨에 저장)
+      - /mnt/data/cache:/var/cache/nginx
+      
+      # GoAccess 대시보드 추가
+      - /var/www/goaccess:/var/www/goaccess:ro
+
+      - /tmp/.htpasswd:/etc/nginx/.htpasswd:ro

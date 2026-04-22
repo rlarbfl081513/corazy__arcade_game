@@ -1,0 +1,117 @@
+.editor-section .title{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 현재 작성자 라벨 */
+.editor-section .current-editor-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ff5500;
+}
+
+.editor-section .title-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.editor-section .icon-name{
+    font-size: 14px;
+}
+
+.editor-section .code-reset .btn-icon{
+    height: 20px;
+}
+.editor-section .btn-icon {
+    height: 24px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+
+.editor-section .btn:hover .btn-icon{
+  transform: translate(0px, -4px) scale(1.1);
+}
+
+.editor-section .btn:active .btn-icon{
+  transform: translate(0px, 0px) scale(1);
+}
+
+.editor-section .btn-box{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-section .btn{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-section{
+    flex: 1 1 auto; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.editor{
+    flex: 1;
+    min-height: 0;
+    border-radius: 20px;
+}
+
+.monaco-editor.vs {
+    text-shadow: none !important;
+}
+
+.monaco-editor.vs .view-lines * {
+    text-shadow: none !important;
+}
+.monaco-editor .margin-view-overlays .line-numbers {
+    width: 40px !important;
+}
+.monaco-scrollable-element{
+    left: 50px !important;
+}
+
+
+.editor-section .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.editor-section .save-code-message{
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--border-2-color);
+}
+
+/* 에디터 읽기 전용 배너 (릴레이 게임) */
+.editor-section .editor-readonly-banner {
+    background-color: #ffe4b3;
+    border: 2px solid #ffb84d;
+    padding: 8px 16px;
+    text-align: center;
+    font-weight: 700;
+    color: #664400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

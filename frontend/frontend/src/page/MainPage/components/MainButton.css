@@ -1,0 +1,126 @@
+/* 상단 버튼 영역 */
+.main-btn-box{
+  padding-top: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  overflow: visible; /* 툴팁이 보이도록 */
+}
+
+.main-btn-box .btn-box{
+  width: clamp(180px, 22vw, 250px);
+  height: clamp(50px, 13vh, 82px);
+  background-color: #999999;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible; /* 툴팁이 보이도록 */
+}
+
+.main-btn-box button {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: clamp(170px, 17vw, 210px);
+  padding: 12px 14px;
+  border: 2px solid #000000;
+  background-color: #FF0000;
+  border-radius: 10px;
+  font-size: clamp(20px, 2.2vw, 40px);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 6px 0px #000000;
+  transition: all 0.2s;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow:
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black;
+}
+
+.main-btn-box button:hover {
+  transform: translate(-50%, 0) translate(0px, 6px);
+  box-shadow: 0px 2px 0px #000000;
+}
+
+.main-btn-box button:active {
+  transform: translate(-50%, 0) translate(0px, 10px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/* 툴팁 스타일 (네오브루탈리즘 디자인) */
+/* 버튼 wrapper에 툴팁 추가 */
+.main-btn-box .btn-box {
+  position: relative;
+}
+
+/* 툴팁 말풍선 (네오브루탈리즘) */
+.main-btn-box .btn-box .tooltip-btn::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 30px); /* 버튼 위쪽에 표시 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #FCC206; /* 노란색 배경 (메인 컬러) */
+  color: #000000; /* 검은색 텍스트 */
+  padding: 10px 16px;
+  border: 3px solid #000000; /* 두꺼운 검은 테두리 */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  box-shadow: 4px 4px 0px #000000; /* 네오브루탈리즘 그림자 */
+  z-index: 10000 !;
+  letter-spacing: 0.5px !;
+  text-shadow: none; /* 버튼의 text-shadow 완전히 제거 */
+  font-family: 'Inter', sans-serif; /* 폰트 명시 */
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* 툴팁 말풍선 꼬리 (검은 테두리) */
+.main-btn-box .btn-box .tooltip-btn::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 18px); /* 말풍선 바로 아래 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #000000; /* 검은색 꼬리 */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* 호버 시 툴팁 표시 */
+.main-btn-box .btn-box .tooltip-btn:hover::before,
+.main-btn-box .btn-box .tooltip-btn:hover::after {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 툴팁 애니메이션 (약간 위로 올라오는 효과) */
+.main-btn-box .btn-box .tooltip-btn:hover::before {
+  bottom: calc(100% + 35px);
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.main-btn-box .btn-box .tooltip-btn:hover::after {
+  bottom: calc(100% + 23px);
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* keep column layout; shrink widths instead of wrapping out of column */

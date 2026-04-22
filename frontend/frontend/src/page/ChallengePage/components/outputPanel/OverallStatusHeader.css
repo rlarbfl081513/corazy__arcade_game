@@ -1,0 +1,26 @@
+.overall-status-header{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end ;
+    justify-content: flex-start;
+    padding-bottom: 14px;
+    gap: 12px;
+}
+.overall-status-header .overall-status {
+    font-size : 18px;
+    font-weight:900;
+}
+
+.overall-status-header .fail{
+    color:#F8615C;
+}
+
+.overall-status-header .pass{
+    color:#2CBB5D;
+}
+
+.overall-status-header .sub-info{
+    color: var(--border-2-color);
+    font-weight: 600;
+    font-size: 12px;
+}

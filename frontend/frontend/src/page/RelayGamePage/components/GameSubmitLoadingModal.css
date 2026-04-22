@@ -1,0 +1,166 @@
+.loading-container {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    background-color: aliceblue;
+    z-index: 99;
+    padding: 30px 30px 36px 30px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 3px solid #000;
+}
+
+.loading-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+
+.loading-title {
+    height: 20px;
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.loading-text {
+    font-size: 16px;
+}
+
+.lodaing-animation {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border: 2px solid #000;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.loading-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.loading-container .loading-title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    gap: 2px;
+}
+
+.loading-num {
+    font-size: 60px;
+    text-align: right;
+    color: #FF0000;
+}
+
+.judging {
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.judging .circle {
+    width: 10px;
+    height: 10px;
+    background-color: #FF0000;
+    border-radius: 100%;
+}
+
+.percent {
+    line-height: 70%;
+    font-weight: 300;
+    font-size: 34px;
+}
+
+/* 두근거리는 얼굴 이미지 */
+.loading-face {
+    width: 250px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: -2%;
+    left: 50%;
+    animation: shiver 0.5s infinite linear;
+    transform-origin: center;
+    z-index: 2; /* 라인 위에 표시 */
+}
+
+/* 해결된 키프레임: 중앙 정렬(-50%, -50%)을 유지하면서 흔들기 */
+@keyframes shiver {
+    0%   { transform: translate(-50%, -50%) translate(0px, 0px)   rotate(0deg); }
+    10%  { transform: translate(-50%, -50%) translate(-2px, -2px) rotate(-1deg); }
+    20%  { transform: translate(-50%, -50%) translate(-2px, 0px)  rotate(1deg); }
+    30%  { transform: translate(-50%, -50%) translate(2px, 2px)   rotate(0deg); }
+    40%  { transform: translate(-50%, -50%) translate(1px, -1px)  rotate(1deg); }
+    50%  { transform: translate(-50%, -50%) translate(-1px, 2px)  rotate(-1deg); }
+    60%  { transform: translate(-50%, -50%) translate(-2px, 1px)  rotate(0deg); }
+    70%  { transform: translate(-50%, -50%) translate(2px, 1px)   rotate(-1deg); }
+    80%  { transform: translate(-50%, -50%) translate(-1px, -1px) rotate(1deg); }
+    90%  { transform: translate(-50%, -50%) translate(1px, 2px)   rotate(0deg); }
+    100% { transform: translate(-50%, -50%) translate(1px, -2px)  rotate(-1deg); }
+}
+
+/* --- 새로 교체된 하트비트 라인 스타일 --- */
+
+.heartbeat-line {
+    width: 100%;
+    height: 150px; /* 필요에 따라 높이 조절 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* 얼굴 뒤로 배치 */
+    overflow: visible; /* 선이 잘리지 않게 */
+}
+
+/* SVG 내부 스타일 */
+.heartbeat-line svg {
+    width: 100%; /* 원본 스케일 고려하여 크기 조정 */
+    height: 120px;
+    /* overflow: visible; */
+}
+
+.heartbeat-line svg g {
+    fill: none;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 배경 라인 (연한 빨강) */
+.heartbeat-line svg g#back {
+    stroke: rgba(255, 77, 80, 0.2); /* #ff4d5033 */
+}
+
+/* 애니메이션 키프레임 */
+@keyframes dash {
+    from {
+        opacity: 1;
+    }
+    to {
+        stroke-dashoffset: 0;
+        opacity: 0.5;
+    }
+}

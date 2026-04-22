@@ -1,0 +1,169 @@
+  /* 네오브루탈리즘 디자인 - 배경 이미지 + 중앙 배치 */
+* { box-sizing: border-box; }
+
+.main-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url('@/assets/background/main_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  padding: 50px 40px ; /* 위아래 패딩 증가 */
+  position: relative;
+}
+
+/* Rolling banner container at the top center */
+.top-rolling-banner{
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.bott-rolling-banner{
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.side-rolling-banner{
+  position: absolute;
+  top: 40px;
+  left: -50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 6;
+  transform: rotate(-10deg);
+  transform-origin: center; /* 회전 기준점 (기본값: center) */
+}
+
+
+/* 중앙 컨테이너 - 왼쪽, 위, 오른쪽 여유 공간 */
+.content-container {
+  /* 1) 뷰포트 기준으로 줄이기 - 스케일 증가 */
+  transform: scale(0.7); 
+  flex: 0 0 auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  /* align-items: flex-end; */
+  min-width: 0;
+  height: 124vh;
+  margin-top: 30px;
+}
+
+/* @media (max-width: 1200px) {
+  .main-page { transform: scale(0.8); }
+}
+@media (max-width: 800px) {
+  .main-page { transform: scale(0.67); }
+} */
+
+.main-page .left-section{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  height: 100%;
+  flex: 1;
+}
+
+.main-page .right-section {
+  justify-content: center;
+  width: 1350px;
+  gap: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  flex: 3;
+}
+
+.main-page .game-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: visible; /* 툴팁이 잘리지 않도록 */
+}
+
+.main-page .room-btn-box {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  overflow-y: visible; /* 툴팁이 보이도록 변경 */
+  flex: 2;
+  min-height: 0;
+
+}
+
+.content-container .chat-room{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items:center ;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1.1;
+  min-height: 0;
+}
+
+.btn-and-chat{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+/* 메인 화면 종료 버튼 (인트로로 이동) */
+.main-exit-btn {
+  width: 54px;
+  height: auto;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 8px;
+  background: #ff7300;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+  transition: all 0.1s;
+  text-transform: uppercase;
+}
+
+.main-exit-btn:hover {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+}
+
+.main-exit-btn:active {
+  box-shadow: 0px 0px 0 #000;
+  transform: translate(4px, 4px);
+}
+
+/* Layout sizing for three columns (shrink widths, no wrapping) */
+.content-container > .room { 
+  flex: 1 1 500px;
+  min-width: 420px;
+  max-width: 800px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-container > .btn-and-chat { 
+  flex: 0 1 clamp(180px, 20vw, 300px); 
+}

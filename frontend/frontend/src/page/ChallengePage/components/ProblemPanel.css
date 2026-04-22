@@ -1,0 +1,133 @@
+.problem-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.problem-section .box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.problem-section .box:last-child{
+    padding-bottom: 12px;
+}
+
+.problem-section .big.title {
+    font-size: 24px;
+}
+
+.problem-section .title{
+    font-size: 14px;
+    font-weight: 900;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.problem-section .content{
+    font-size: 12px;
+}
+
+.problem-section .content.options{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+
+.problem-section .options .option{
+    padding: 4px 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    background-color: var(--border-color);
+}
+
+/* 난이도에 따른 디자인 컬러 */
+.option.level-tag {
+    font-weight: 600;
+}
+
+.option.level-tag.easy {
+    color: var(--level-easy-color);
+}
+
+.option.level-tag.easy.line {
+    border: 2px solid var(--level-easy-color);
+}
+
+.option.level-tag.medium {
+    color: var(--level-medium-color);
+}
+
+.option.level-tag.medium.line {
+    border: 2px solid var(--level-medium-color);
+}
+
+.option.level-tag.hard {
+    color: var(--level-hard-color);
+}
+
+.option.level-tag.hard.line {
+    border: 2px solid var(--level-hard-color);
+}
+
+.option.level-tag.very-hard {
+    color: var(--level-very-hard-color);
+}
+
+.option.level-tag.very-hard.line {
+    border: 2px solid var(--level-very-hard-color);
+}
+
+.problem-section .content{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.problem-section .pro-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.problem-section .pro-name img{
+    width: 20px;
+}
+
+.problem-section .content .info{
+    line-height: 1.4;
+}
+
+.problem-section .example-case{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: var(--content-bg-color);;
+}
+
+.divide-line{
+    width: 100%;
+    height: 1px;
+    background-color:var(--border-color);
+}
+.small-box{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+/* 입출력 예시 리스트 */
+.example-case{
+
+}
+.example-case .title{
+    font-size: 14px;
+}

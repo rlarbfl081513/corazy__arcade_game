@@ -1,0 +1,134 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.set-modal-content {
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 2px solid #000;
+}
+
+.modal-header h2 { margin:0; font-size:1.2rem; font-weight:900; }
+
+.modal-close {
+  background:none; border:none; font-size:1.5rem; cursor:pointer;
+}
+
+.modal-tabs {
+  display: flex;
+  border-bottom: 2px solid #000;
+}
+
+.tab {
+  flex:1;
+  padding:10px;
+  background:#eee;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.tab.active { background: orange; border: 2px solid #000; }
+
+.modal-body { 
+  padding:16px; 
+}
+
+.tab-section h3 {
+  border-bottom: 1px solid #555;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.power-mode-header {
+  /* Make it big */
+  font-size: 1.5rem; 
+  color: #f1f1f1;
+  /* Ensure it aligns to the left (overriding any default H2 centering) */
+  text-align: left !important;
+  /* Adjust spacing */
+  margin-top: 25px;
+  margin-bottom: 15px;
+  padding: 0;
+  padding-bottom: 15px;
+}
+
+.switch, .range { display:flex; align-items:center; margin-bottom:12px; gap:8px; }
+
+.switch input { opacity:0; width:0; height:0; }
+
+.slider {
+  position:relative; width:44px; height:24px; background:#ccc; border-radius:12px;
+  cursor:pointer; transition:0.2s;
+}
+
+.slider:before {
+  content:""; position:absolute; left:2px; top:2px;
+  width:20px; height:20px; background:#fff; border-radius:50%;
+  transition:0.2s;
+}
+
+input:checked + .slider { background:#4caf50; }
+
+input:checked + .slider:before { transform:translateX(20px); }
+
+.range input { flex:1; }
+
+.range span { min-width:38px; text-align:right; font-weight:600; }
+
+.modal-footer { padding:12px; text-align:right; border-top:2px solid #000; }
+
+.modal-ok {
+  background:#ffeb3b; border:2px solid #000; border-radius:8px;
+  padding:6px 16px; font-weight:600; cursor:pointer;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.15s ease;
+}
+
+.modal-ok:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.modal-ok:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #000;
+}
+
+.setting-group {
+    /* Ensures the description is below the switch, and adds spacing */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Increase space between separate settings */
+}
+
+.setting-group > label.switch {
+    /* Remove default margin-bottom from the label if you are using setting-group */
+    margin-bottom: 0; 
+}
+
+.setting-desc {
+    /* Style for the explanation text */
+    font-size: 0.8rem;
+    color: #666; /* Slightly grayed out text */
+    margin: 4px 0 0 24px; /* Indent the text to align below the switch/label */
+    padding: 0;
+}

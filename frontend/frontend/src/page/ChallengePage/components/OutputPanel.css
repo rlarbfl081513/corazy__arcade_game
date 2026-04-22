@@ -1,0 +1,149 @@
+
+/* 코드 실행전  */
+.test-results-content, .test-modal-content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.output-section{
+
+}
+
+.output-section .box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.output-section .box:last-child{
+    padding-bottom: 12px;
+}
+
+.output-section .title-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 0 0 8px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.output-section .sub{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.output-section .title{
+    font-size: 12px;
+    font-weight: 900;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.output-section .content{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.output-section .content .value{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.output-section .content .value .title{
+    width: 80px;
+}
+
+/* 연결 상태 메시지 */
+.output-status-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.output-status-message .status-icon {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.output-status-message .status-icon.connecting {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.output-status-message .status-icon.ready {
+    animation: bounce 0.6s ease-in-out;
+}
+
+.output-status-message p {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.output-status-message .sub-message {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary-color);
+    margin-top: -5px;
+}
+
+/* 로딩 스피너 */
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 애니메이션 정의 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

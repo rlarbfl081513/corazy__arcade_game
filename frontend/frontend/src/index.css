@@ -1,0 +1,226 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hide-os-cursor,
+.hide-os-cursor * {
+  cursor: none !important;
+}
+
+/* index.css 또는 App.css (글로벌 CSS 파일) */
+
+/* 1. :root에 라이트 모드(기본값) 변수를 정의합니다. */
+:root {
+  --bg-color: #FFFFFF;
+  --bg-main-color : #3970E4;
+  --bg-sub-1-color : #F975CB;
+  --bg-sub-2-color : #FCC206;
+  --bg-sub-3-color : #B3FC87;
+  --text-color: #222222;
+  --border-color: #DDDDDD; /* .main-container에 있던 값을 가져옴 */
+  --border-2-color: #6d6d6d;
+  --content-bg-color : #f6f6f6; /* .main-container에 있던 값을 가져옴 */
+  --btn-pass-color : #2CBB5D;
+  --btn-fail-color : #F8615C;
+  --level-easy-color : #19b126;
+  --level-medium-color : #87aaf6;
+  --level-hard-color : #f68787;
+  --level-very-hard-color : #ff0000;
+
+  --background: oklch(96.22% 0.0569 95.61);
+  --secondary-background: oklch(100% 0 0);
+  --foreground: oklch(0% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --border: oklch(0% 0 0);
+  --ring: oklch(0% 0 0);
+  --overlay: oklch(0% 0 0 / 0.8);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #FFBF00;
+  --chart-2: #0099FF;
+  --chart-3: #FF7A05;
+  --chart-4: #00D696;
+  --chart-5: #7A83FF;
+  --chart-active-dot: #000;
+
+  --neo-amber: #FCC206;
+  --neo-red: oklch(67.28% 0.2147 24.22);
+  --neo-white: oklch(100% 0.00011 271.152);
+}
+
+/* 2. :root[data-theme="dark"]에 다크 모드 변수를 정의합니다. */
+:root[data-theme="dark"] {
+  --bg-color: #222222;
+  --text-color: #FFFFFF;
+  --border-color: #515050;
+  --border-2-color:#515050;
+  --content-bg-color: #434343;
+
+  --background: oklch(28.91% 0.0359 90.09);
+  --secondary-background: oklch(23.93% 0 0);
+  --foreground: oklch(92.49% 0 0);
+  --main-foreground: oklch(0% 0 0);
+  --border: oklch(0% 0 0);
+  --ring: oklch(100% 0 0);
+  --shadow: 4px 4px 0px 0px var(--border);
+  --chart-1: #E5AC00;
+  --chart-2: #008AE5;
+  --chart-3: #EB6D00;
+  --chart-4: #00BD84;
+  --chart-5: #7A83FF;
+  --chart-active-dot: #fff;
+
+  --neo-amber: #FCC206;
+  --neo-red: oklch(67.28% 0.2147 24.22);
+  --neo-white: oklch(100% 0.00011 271.152);
+}
+
+@theme inline {
+  --color-amber: var(--neo-amber);
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-foreground: var(--foreground);
+  --color-main-foreground: var(--main-foreground);
+  --color-border: var(--border);
+  --color-overlay: var(--overlay);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-red: var(--neo-red);
+  --color-white: var(--neo-white);
+  --spacing-boxShadowX: 4px;
+  --spacing-boxShadowY: 4px;
+  --spacing-reverseBoxShadowX: -4px;
+  --spacing-reverseBoxShadowY: -4px;
+  --radius-base: 5px;
+  --shadow-shadow: var(--shadow);
+  --font-weight-base: 500;
+  --font-weight-heading: 700;
+}
+
+@layer base {
+  body {
+    @apply text-foreground font-base bg-background;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* 3. body에서 변수를 사용하고, 여기에 transition을 적용합니다. */
+body {
+  /* cursor: url('assets/cursorimg.png') 0 0, auto; */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* 부드러운 전환 효과는 변수를 사용하는 요소에 직접 적용 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#custom-cursor {
+  position: fixed;
+  pointer-events: none; /* 이미지가 클릭을 방해하지 않도록 함 */
+  z-index: 9999;
+  width: 60px;
+  transition: transform 0.1s linear; /* 0.1초 동안 부드럽게 따라옴 */
+}
+
+/* Chrome, Safari 등 */
+body::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Chrome, Safari 등 */
+body::-webkit-scrollbar {
+  display: none; 
+}
+
+.theme-toggle-button {
+  position: fixed; /* 화면에 고정 */
+  bottom: 140px;
+  right: 20px;
+  z-index: 1000; 
+}
+
+
+/* =================================
+ * 버튼 스타일 초기화 (Button Reset)
+ * ================================= */
+button {
+  /* 1. 브라우저/OS의 기본 UI 모양 제거 */
+  appearance: none;
+  -webkit-appearance: none; /* Safari, Chrome */
+  -moz-appearance: none;    /* Firefox */
+  
+  /* 2. 배경 및 테두리 제거 */
+  background: none;
+  border: none;
+
+  /* 3. 여백 및 패딩 제거 */
+  margin: 0;
+  padding: 0;
+
+  /* 4. 폰트 관련 속성을 부모 요소에서 상속 */
+  font: inherit;
+  color: inherit;
+
+  /* 5. 기본 커서를 'pointer'로 유지 (리셋 시 text로 바뀔 수 있음) */
+  cursor: pointer;
+
+  /* 6. (선택) 포커스 아웃라인 제거 
+     * 이걸 쓴다면 아래 :focus-visible 설정을 꼭 해야 합니다. */
+  /* outline: none; */
+}
+
+
+/* 모달 */
+/* 1. 화면 전체를 덮는 반투명 배경 (껍데기) */
+.modal-overlay {
+  /* (수정) position: fixed - 스크롤과 상관없이 화면 전체 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 2. (수정) 정가운데 흰색 박스 (알맹이) */
+.modal-content {
+  position: relative; 
+  background: white;
+  border-radius: 12px;
+  min-width: 400px;
+  max-width: 90%;
+  max-height: 90vh;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}

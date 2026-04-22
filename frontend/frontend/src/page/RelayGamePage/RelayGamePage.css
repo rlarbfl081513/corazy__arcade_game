@@ -1,0 +1,1243 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.relay-game-page {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  max-width: none !important;
+}
+
+.relay-game-page.noturn-active-sky{
+  --editor-bg: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('@/assets/background/base_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.relay-game-page.turn-active-sky {
+  background-image: url('@/assets/background/skyBg.png');
+  background-size: 100% auto ;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.relay-game-page .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  max-width: none !important;
+}
+
+.relay-game-page .main-container {
+  width: 94vw;
+  height: 97vh;
+  /* width: 100%;
+  height: 100%; */
+  /* border-radius: 14px !important; */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #ffffff00;
+  color: var(--text-color);
+  border: 2px solid #c6c4c400;
+  border-radius: 0;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  max-width: none !important;
+}
+
+.relay-main-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
+  gap: 24px;
+  /* 1. Firefox */
+  scrollbar-width: none;
+  
+  /* 2. IE / Edge */
+  -ms-overflow-style: none;
+}
+
+/* 3. Chrome, Safari, Webkit 기반 브라우저 */
+.relay-main-row::-webkit-scrollbar {
+  display: none; 
+}
+
+
+.relay-game-page .problem-section{
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.relay-game-page .scrollable-panel {
+  overflow-y: auto !important;
+}
+
+.relay-game-page .scrollable-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.relay-game-page .scrollable-panel::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.relay-game-page .scrollable-panel::-webkit-scrollbar-thumb {
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.relay-game-page .main-panel {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  max-width: none !important;
+}
+
+.relay-game-page .main-title {
+  position: absolute;
+  top: 20px;
+  left: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 20px;
+  padding: 12px 16px;
+  border: 2px solid #00000000;
+
+  /* border-radius: 14px !important; */
+  /* background-color: #fff; */
+  width: auto !important;
+  color: var(--text-color);
+}
+
+.relay-game-page .main-title .sub {
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.relay-game-page .center-function {
+  flex: 2;
+}
+
+.relay-game-page .main-title .icon{
+    padding-top: 4px;
+}
+
+.relay-game-page .main-title .to-home {
+  cursor: pointer;
+  width: 20px;
+  height: auto;
+}
+
+
+.relay-game-page .row-section {
+  width: 100%;
+  height: 90vh;
+  flex: 1;
+  max-width: none !important;
+  border: 2px solid #000000;
+  border-radius: 14px !important;
+}
+
+.relay-game-page .col-section {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  max-width: none !important;
+}
+
+
+
+/* 참가자 정보 바 (상단) */
+.relay-game-page .participants-bar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 24px 24px 24px;
+  background-color: var(--bg-color);
+  gap: 16px;
+  border-radius: 14px;
+  border: 2px solid #000;
+  /* width: 100%; */
+}
+
+.relay-game-page .participants-list-horizontal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  flex: 2;
+  /* overflow-x: auto; */
+}
+
+/* 참가자 목록 스크롤바 */
+.relay-game-page .participants-list-horizontal::-webkit-scrollbar {
+  height: 6px;
+}
+
+.relay-game-page .participants-list-horizontal::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.relay-game-page .participants-list-horizontal::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 10px;
+}
+
+.relay-game-page .participant-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--bg-color);
+  border: 1px solid #00000000;
+
+  min-width: 10px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.relay-game-page .char-img {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid #b0b0b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  
+  /* 아래 속성들이 중요합니다 */
+  position: relative; /* 자식 요소(wait-box, fence)의 기준점이 됩니다 */
+  overflow: hidden;   /* 튀어나온 fence를 잘라냅니다 */
+  isolation: isolate; /* 사파리 등 일부 브라우저에서 border-radius 마스킹 오류 방지 */
+}
+
+
+.relay-game-page .user-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.box-active .user-info .participant-name{
+  /* color: #ff0000 !important; */
+}
+
+/* 현재 턴 참가자 강조 */
+.relay-game-page .participant-active {
+  border: 2px solid #00000000;
+  /* background-color: #F975CB !important; */
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.4); */
+}
+
+.relay-game-page .participant-empty {
+  opacity: 0.5;
+  border-style: dashed;
+  display: none;
+}
+
+.relay-game-page .participant-number {
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid #a7a7a7;
+  border-radius: 100%;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 15px;
+  font-weight: 900;
+  color: #a7a7a7 !important;
+  font-weight: 600;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+.participant-number.number-active {
+  border: 3px solid #F975CB;
+  color: #F975CB !important;
+}
+
+.relay-game-page .participant-name {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  overflow: hidden;
+  text-align: center;
+  width: 120px;
+  word-break: break-all;
+  height: 36px;
+  color: #555 !important;
+}
+
+.participant-name.name-active {
+  color: #F975CB !important;
+}
+
+.relay-game-page .host-badge {
+  font-size: 12px;
+}
+.run {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110%;
+  background-image: url('@/assets/background/runBg.png');
+  background-size: auto 100%;       /* 영역을 꽉 채움 */
+  background-position: center;  /* 중앙 정렬 */
+  background-repeat: no-repeat; /* 반복 방지 */
+}
+
+.relay-game-page .fire {
+  transform: translate(-50%, -50%);
+  width: 110px !important;
+  height: 110px;
+  max-width: 200px;
+  position: absolute;
+  top: -4%;
+  border: 3px solid #F975CB;
+  border-radius: 50%;
+  z-index: 2;
+  animation: rotation 1s linear infinite;
+
+}
+.relay-game-page .fire::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: #F975CB;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+/* 턴 배지 */
+.relay-game-page .turn-badge {
+  font-size: 14px;
+  margin-left: 3px;
+  width: 100px;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    /* 0% (시작) 지점: 원래 위치 */
+    transform: translateY(0);
+  }
+  50% {
+    /* 50% (중간) 지점: 8px 위로 이동 */
+    transform: translateY(-6px); 
+  }
+  100% {
+    /* 100% (끝) 지점: 다시 원래 위치로 */
+    transform: translateY(0);
+  }
+}
+
+/* 기다리는 사람 스타일 */
+.wait-box {
+  width: 100%;
+  height: 100%;
+  position: relative; /* fence의 직접적인 기준점 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000044;
+}
+
+.waiting {
+  opacity: 0.3;
+}
+
+.waiting-lock {
+  position: absolute;
+  z-index: 10;
+  width: 40px;
+  opacity: 0.8;
+}
+
+/* 3. fence 위치 및 크기 조정 */
+.fence {
+  position: absolute;
+  bottom: 0;        /* 하단에 붙이기 (필요에 따라 조절, 예: -10px) */
+  left: 50%;        /* 가로 중앙 정렬 시작점 */
+  transform: translateX(-50%); /* 정확한 가로 중앙 정렬 */
+  
+  width: 180px;
+  max-width: 300px !important;      /* char-img 너비에 맞춤 (더 크게 하려면 120% 등 입력) */
+  z-index: 5;       /* 캐릭터보다 앞에 오게 하려면 높게 설정 */
+  pointer-events: none; /* 클릭 등이 필요 없다면 통과시키기 */
+}
+
+
+
+/* 타이머 컨테이너 */
+.relay-game-page .game-timers {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin: 20px;
+}
+
+/* 개별 타이머 박스 */
+.relay-game-page .game-timer-box {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-2-color);
+  border-radius: 6px;
+  padding: 0 12px;
+  width: 120px;
+}
+
+.relay-game-page .game-timer-box .timer-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.relay-game-page .game-timer-box .timer-value {
+  font-size: 20px;
+  font-weight:bold;
+  color: var(--text-color);
+  /* font-family: 'Courier New', monospace; */
+  letter-spacing: 0.5px;
+}
+
+/* 타이머 경고 (30초 이하) */
+.relay-game-page .timer-warning {
+  animation: pulse 1s infinite;
+  border-color: #ff5500 !important;
+  background-color: #ff55008a;
+}
+
+.relay-game-page .timer-warning .timer-value {
+  color: #ff0000 !important;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.relay-game-page .global-countdown-overlay {
+  position: fixed; /* 'absolute' -> 'fixed' (화면 전체 기준) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-size: 250px; /* 폰트 크기 대폭 증가 */
+  font-weight: 900;
+  color: #ff0000;
+  text-shadow: 
+    5px 5px 0px #fff, /* 그림자도 더 크게 */
+    -2px -2px 0 #fff,  
+    2px -2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px 2px 0 #fff;
+  
+  z-index: 9999; /* 모든 요소(패널, 모달 포함) 위에 표시 */
+  pointer-events: none; /* 클릭 방해 방지 */
+  
+  /* 애니메이션은 기존 것 재사용 */
+  animation: popCount 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.0);
+}
+
+/* @keyframes popCount 는 기존 CSS에 있으므로 수정할 필요 없습니다. */
+@keyframes popCount {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.your-turn-message-overlay {
+    /* width: 200px;
+    background-image: url('@/assets/background/cloud.png'); */
+    background-size: 100%auto;       /* 영역을 꽉 채움 */
+    background-position: center;  /* 중앙 정렬 */
+    background-repeat: no-repeat; /* 반복 방지 */
+
+    position: fixed; 
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px; 
+    text-align: center;
+    font-weight: 900;
+    color: #000000;
+    z-index: 9999; 
+    pointer-events: none; 
+}
+
+/* RelayGamePage 내 ChatSidebar 스타일 오버라이드 */
+.relay-game-page .bottom-sidebar {
+  background-color: #FFFFFF;
+  border-radius: 0;
+  border: none;
+  border-left: 1px solid var(--border-color);
+  height: 100%;
+  width: 100%;
+  padding-bottom: 12px;
+
+}
+
+.relay-game-page .chat-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.main-chat-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.noturn-active-lock {
+  display: none;
+}
+
+.chat-section .cover.turn-active-chat {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #00000070;
+}
+
+.turn-active-chat img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 80px;
+}
+
+
+.relay-game-page .title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.relay-game-page .chat-messages {
+  overflow-y: auto;   /* 세로 스크롤 */
+  
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px 12px 16px; /* 하단 패딩 약간 추가 */
+  overscroll-behavior: contain;
+  /* 1. Firefox 용 */
+  scrollbar-width: none;  
+  /* 2. IE / Edge 용 */
+  -ms-overflow-style: none;
+}
+
+/* 3. Chrome, Safari, Webkit 기반 브라우저 용 */
+.relay-game-page .chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.relay-game-page .chat-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.relay-game-page .chat-user {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px !important;
+  font-weight: bold;
+  color: #000000;
+}
+
+.chat-text {
+  font-size: 12px !important;
+  color: #000000;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.relay-game-page .vertical-line {
+  width: 1px;
+  height: 100%;
+  background-color: #000;
+}
+
+.relay-game-page .chat-input-form {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.relay-game-page .chat-input {
+  min-height: 36px;
+  max-height: 150px;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  background: #FFFFFF;
+}
+
+.relay-game-page .chat-input:focus {
+  border: 2px solid #000000;
+  background: #FFFFFF;
+}
+
+.relay-game-page .chat-send-btn {
+  height: 36px;
+  padding: 8px 16px;
+  background: #FCC206;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.relay-game-page .chat-send-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.relay-game-page .chat-send-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/* 전략 구상 시간 오버레이 */
+.discussion-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.98);
+  border: 3px solid #ff0000;
+  font-size: 24px;
+  overflow-y: auto;
+}
+
+.discussion-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.discussion-overlay .dis-title {
+  font-size: 28px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  color: #000;
+}
+
+.discussion-overlay .dis-title img {
+  width: 28px;
+  height: 28px;
+}
+
+.discussion-overlay .dis-time {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: #e74c3c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.time-meeting {
+  width: 200px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+/* 이모지 스타일 */
+.emoji-popover {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 48px;
+  right: 0;
+  margin-right: 16px;
+  background-color: #78ceff3d;
+  width: 94%;
+  height: auto;
+  border-radius: 10px;
+  padding: 14px 24px;
+}
+
+.emoji-option {
+  width: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.emoji-bubble {
+  width: 80px;
+  height: 64px;
+  padding: 6px;
+  background-image: url('@/page/RelayGamePage/assests/emoji/emojiBox.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 100%;
+  top: -4%;
+  animation: bubbleFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.emoji-bubble img {
+  width: 40px;
+}
+
+.emoji-img {
+  width: 48px;
+  height: auto;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.2s ease;
+  transform-origin: center;
+}
+
+.emoji-option:hover .emoji-img {
+  transform: scale(1.2) rotate(-3deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.emoji-option:active .emoji-img {
+  transform: scale(0.8);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes emoji-pop {
+  0% { transform: scale(0.9); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1.0); }
+}
+
+.emoji {
+  padding: 8px !important;
+}
+
+/* 핑 마커 애니메이션 */
+.ping-marker {
+  animation: pingDrop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, pingFloat 1.5s ease-in-out 0.6s infinite;
+}
+
+/* 위에서 아래로 뚝 떨어지는 애니메이션 (중력 효과) */
+@keyframes pingDrop {
+  0% {
+    transform: translate(-50%, -300%) scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -95%) scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(-50%, -103%) scale(0.95);
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* 위아래로 붕붕 떠있는 애니메이션 */
+@keyframes pingFloat {
+  0%, 100% {
+    transform: translate(-50%, -100%);
+  }
+  50% {
+    transform: translate(-50%, -110%);
+  }
+}
+
+/* 게임 결과 모달 스타일 - 프로젝트 디자인 통일 */
+.result-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.result-modal-content {
+  background-color: #ffffff;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #000;
+  padding: 32px;
+  width: 100%;
+  max-width: 700px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.result-modal-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #000;
+  letter-spacing: 1px;
+  text-shadow:
+    -2px -2px 0 #FCC206,
+     2px -2px 0 #FCC206,
+    -2px  2px 0 #FCC206,
+     2px  2px 0 #FCC206;
+}
+
+.result-modal-loading {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+}
+
+.result-modal-error {
+  text-align: center;
+  padding: 32px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #FF0000;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.result-modal-no-data {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+}
+
+.result-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.award-card {
+  background-color: #FCC206;
+  padding: 20px 16px;
+  border: 3px solid #000;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0px #000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.award-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.award-title {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.award-nickname {
+  color: #000;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  text-shadow:
+    -1px -1px 0 white,
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white;
+}
+
+.award-value {
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.result-rankings {
+  background-color: #f5f5f5;
+  padding: 24px;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+.rankings-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #000;
+}
+
+.rankings-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rankings-table thead tr {
+  background-color: #FCC206;
+  color: #000;
+}
+
+.rankings-table th {
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #000;
+}
+
+.rankings-table th:first-child {
+  border-right: 2px solid #000;
+}
+
+.rankings-table tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.15s;
+}
+
+.rankings-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.rankings-table tbody tr:hover {
+  background-color: #fff9e6;
+}
+
+.rankings-table td {
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.rankings-table .rank-cell {
+  font-weight: bold;
+  font-size: 18px;
+  width: 80px;
+  text-align: center;
+  border-right: 2px solid #ddd;
+  color: #FF0000;
+}
+
+.rankings-no-data {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+  font-weight: 600;
+}
+
+.result-modal-footer {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.result-modal-close-btn {
+  background-color: #FF0000;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 14px 40px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #000;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+  text-shadow:
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -2px  2px 0 black,
+     2px  2px 0 black;
+}
+
+.result-modal-close-btn:hover {
+  transform: translateY(3px);
+  box-shadow: 0px 3px 0px #000;
+}
+
+.result-modal-close-btn:active {
+  transform: translateY(6px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* ===== 커스텀 모달 스타일 (제출 확인, 나가기 확인) ===== */
+/* 배경 (커서 강제 표시 필수) */
+.relay-game.submit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999 !important;
+  /* 배경에서 마우스 포인터가 보이도록 강제 */
+  cursor: default !important;
+}
+
+/* 모달 박스 (네오 브루탈리즘 스타일) */
+.relay-game.submit-modal-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 14px;
+  padding: 40px 24px;
+  width: 360px;
+  text-align: center;
+  animation: bounceIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.relay-game .modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 900; /* 아주 굵게 */
+}
+
+.relay-game .submit-modal-box h3 {
+  font-size: 20px;
+}
+
+.relay-game .submit-modal-box p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 버튼 영역 */
+.modal-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.modal-btn {
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #000;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.15s ease;
+}
+
+/* 취소 버튼 */
+.modal-btn.cancel {
+  background: #fff;
+}
+
+/* 제출/확인 버튼 (강조색) */
+.modal-btn.submit {
+  background: #4ade80; /* 밝은 초록색 */
+  color: #000;
+}
+
+.modal-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.modal-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #000;
+}
+
+/* 통통 튀는 등장 애니메이션 */
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

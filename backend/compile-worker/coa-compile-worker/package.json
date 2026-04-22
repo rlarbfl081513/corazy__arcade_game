@@ -1,0 +1,37 @@
+{
+  "name": "coa-compile-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test:queue": "node test/insertTestJob.js",
+    "test:all": "node test/runAllTests.js",
+    "test:5": "node test/testCase5_python.js",
+    "test:6": "node test/testCase6_c.js",
+    "test:7": "node test/testCase7_cpp.js",
+    "test:8": "node test/testCase8_java.js",
+    "test:9": "node test/testCase22_concurrency.js",
+    "test:10": "node test/testCase23_concurrencyMixed.js",
+    "test:11": "node test/testCase24_performance.js"
+  },
+  "keywords": [
+    "code-judge",
+    "docker",
+    "sandbox",
+    "compile-server"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Code execution and judging server using Docker sandbox",
+  "dependencies": {
+    "amqplib": "^0.10.9",
+    "aws-sdk": "^2.1691.0",
+    "dockerode": "^4.0.9",
+    "dotenv": "^16.4.5",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,41 @@
+services:
+  coa-snippet-server:
+    build:
+      context: ./coa-snippet-server
+      dockerfile: Dockerfile
+    container_name: coa-snippet-server
+    restart: unless-stopped
+    ports:
+      - "${SERVER_PORT:-8081}:8080"
+    environment:
+      # Server Configuration
+      - SERVER_PORT=8080
+
+      # Database Configuration
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=${DB_USE_SSL:-true}&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+
+      # JPA Configuration
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${JPA_DDL_AUTO:-update}
+      - SPRING_JPA_SHOW_SQL=${JPA_SHOW_SQL:-false}
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+
+      # Application Configuration
+      - SPRING_APPLICATION_NAME=coa-dictation-server
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - coa-network
+
+networks:
+  coa-network:
+    driver: bridge
+
+

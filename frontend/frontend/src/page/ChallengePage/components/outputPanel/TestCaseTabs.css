@@ -1,0 +1,56 @@
+.test-case-tabs{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.test-case-tabs .tab-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px 4px 8px;
+    border-radius: 6px;
+    gap: 2px;
+    transition: transform 0.2s ease;
+}
+
+
+.test-case-tabs .tab-btn:hover {
+  transform: translate(0px, -2px) scale(1);
+  background-color: #e9e9e9; /* 배경색을 살짝 어둡게 */
+}
+
+.test-case-tabs .tab-btn:active {
+  transform: translate(0px, 0px) scale(1);
+}
+
+.case{
+    font-size: 12px;
+}
+
+.tab-btn.active {
+  background-color: #e2e2e2; /* 배경색을 살짝 어둡게 */
+  filter: brightness(0.95); /* 다크모드 대응 */
+}
+
+.case-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabImg{
+    width: 14px;
+    height: auto;
+}
+
+.test-case-tabs .case-fail{
+    width: 20px;
+    height: 20px;
+
+}
+
+.test-case-tabs .case-success{
+    width: 20px;
+    height: 20px;
+}

@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  # Main Server (Spring Boot API Gateway)
+  main-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coa-main-server
+    restart: unless-stopped
+    environment:
+      # Database Configuration (Azure MySQL)
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+      # Server Configuration
+      SERVER_PORT: 8080
+
+      # Microservices URLs
+      AUTH_SERVER_URL: ${AUTH_SERVER_URL}
+      RANKING_SERVER_URL: ${RANKING_SERVER_URL}
+      DICTATION_SERVER_URL: ${DICTATION_SERVER_URL}
+      CHAT_SERVER_URL: ${CHAT_SERVER_URL}
+      ALGORITHM_SERVER_URL: ${ALGORITHM_SERVER_URL}
+
+      # Spring Profiles
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8080/actuator/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    volumes:
+      - ./logs:/app/logs

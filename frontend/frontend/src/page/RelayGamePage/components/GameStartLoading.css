@@ -1,0 +1,48 @@
+/* 전체 화면 어둡게 덮는 영역 */
+.game-start-loading-backdrop {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 과 동일 */
+  background: rgba(0, 0, 0, 0.85); /* 뒤에 게임 화면은 보이게 반투명 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* 게임 화면 위로 올라오도록 */
+}
+
+/* 가운데 모달 박스 */
+.game-start-loading-modal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  background: #00000000;
+  color: #ffffff;
+  padding: 36px 32px;
+  border-radius: 16px;
+  width: 600px;
+  height: 300px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.6;
+  margin-top: 100px;
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); */
+}
+
+.phase-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-start-loading-modal .modal-p {
+  flex: 0 0 100px;      /* flex item 높이를 100px로 고정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-start-loading-modal .modal-p p {
+  margin: 0;            /* 기본 p 마진 제거 */
+  text-align: center;
+}

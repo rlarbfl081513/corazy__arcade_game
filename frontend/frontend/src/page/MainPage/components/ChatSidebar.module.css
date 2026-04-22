@@ -1,0 +1,153 @@
+/* 하단 사이드바 - 네오브루탈리즘 */
+.bottom-sidebar {
+  /* background-image: url("../assets/chat_background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; */
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 2px solid #000000;
+  /* height: clamp(80px, 60vh, 320px); */
+  height: 100%;
+  width: 100%; /* 높이 2배로 증가 */
+  padding-bottom: 14px;
+}
+.title-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 14px 20px 12px 20px;
+  border-bottom: 2px solid var(--border-2-color);
+}
+.editor-section .title-box.line{
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+}
+/* 채팅 영역 */
+.chat-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  /* flex: 1; */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px 0 20px;
+  overscroll-behavior: contain; /* 스크롤 이벤트가 부모로 전파되지 않도록 방지 */
+   scrollbar-width: none;  
+  /* 2. IE / Edge 용 */
+  -ms-overflow-style: none;
+}
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-message {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 12px;
+ border-bottom: 1px solid #000000;
+ padding-bottom: 12px;
+
+}
+.vertical-line{
+  width: 1px;
+  height: 100%;
+  background-color: #000000;
+}
+/* 채팅 유저명 */
+.chat-user {
+  width: 150px;
+  white-space: nowrap;     /* 1. 줄바꿈 금지 */
+  overflow: hidden;        /* 2. 넘치는 텍스트 숨기기 */
+  text-overflow: ellipsis; /* 3. 숨겨진 부분 ... 처리 */
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.chat-text {
+  font-size: 16px;
+  color: #000000;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.chat-input-form {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px;
+  align-items: flex-end; /* ⬅️ 자식들의 '아래'를 맞춤 */
+  margin-top: auto;      /* ⬅️ 섹션의 바닥으로 밀착 */
+}
+
+.chat-input {
+  min-height: 40px;     /* 초기 높이 */
+  max-height: 200px;
+  width: 100%;
+  resize: none;              /* 사용자가 드래그로 크기 조절 못하게 */
+  overflow: hidden;          /* 스크롤바 안 보이게 */
+  padding: 14px 12px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #FFFFFF;
+  /* box-shadow: 4px 4px 0px #000000; */
+}
+
+/* 채팅 입력창 포커스 */
+.chat-input:focus {
+  border: 3px solid #000000;
+  background: #FFFFFF;
+}
+
+/* 채팅 전송 버튼 */
+.chat-send-btn {
+  height: 50px;
+  padding: 10px 20px;
+  background: #FCC206;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.chat-send-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.chat-send-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/* 스크롤바 스타일 */
+/* .chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 0;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+} */

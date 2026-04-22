@@ -1,0 +1,249 @@
+
+.room-box {
+  flex: 1 1 640px;
+  min-width: 0;
+  border: 2px solid #000000;
+  padding: 25px; /* 패딩 조금 증가 */
+  border-radius: 20px;
+  background-color: #FFFFFF; /* 흰색 배경 */
+  display: inline-flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: visible;
+  width: max-content;
+  max-width: none;
+}
+
+/* 상단 버튼 영역 */
+.top-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.top-buttons button {
+  padding: 12px 20px;
+  border: 4px solid #000000;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.top-buttons button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.top-buttons button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+/* 새로고침 버튼 */
+.btn-refresh {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.room-box .rooms-title-box{
+  font-size: 42px;
+  font-weight: 900;
+  color: #000000; /* 네오 브루탈리즘: 검정 텍스트 */
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* 목록 영역 */
+.rooms-section {
+  flex: 1;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.rooms-list {
+  flex: 0 0 auto;
+  overflow-y: auto;
+  overflow-x: visible;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-content: start;
+}
+
+/* 네오 브루탈리즘 언어 카드 */
+.room-box .room-card {
+  max-width: none;
+  background: #FFFFFF;
+  padding: 18px 24px; /* 패딩 축소 */
+  border-radius: 0; /* 네오 브루탈리즘: 직각 */
+  border: 4px solid #000000; /* 테두리 축소 */
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px; /* gap 축소 */
+  min-width: 0;
+  box-shadow: 6px 6px 0 #000000; /* 그림자 축소 */
+  position: relative;
+}
+
+.room-box .room-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #000000;
+  background: #FFF5E1; /* 살짝 밝은 색 */
+}
+
+.room-box .room-card:active {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 #000000;
+}
+
+/* 네오 브루탈리즘 언어 타이틀 */
+.room-title {
+  font-size: 16px; /* 폰트 크기 축소 */
+  font-weight: 900;
+  color: #000000;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.room-info {
+  display: none; /* MVP: 언어 선택에서는 숨김 */
+}
+
+/* 게임 모드 태그 */
+.room-mode {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.room-players {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* 언어 표시 영역 - 네오 브루탈리즘 */
+.language-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* 패딩 축소 */
+  border: 3px solid #000000; /* 테두리 축소 */
+  box-shadow: 3px 3px 0 #000000; /* 그림자 축소 */
+}
+
+.language-name {
+  font-size: 26px; /* 폰트 크기 축소 */
+  font-weight: 900;
+  color: #000000; /* 검정색 텍스트 */
+  text-transform: none; /* uppercase 제거 */
+  letter-spacing: 1px;
+}
+.vs{
+  font-size: clamp(16px, 2vw, 36px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0;
+  margin: 0 clamp(4px, 0.8vw, 6px);
+  text-shadow:
+    -2px -2px 0 black,
+     2px -2px 0 black,
+    -3px  3px 0 rgb(0, 0, 0),
+     3px  3px 0 rgb(0, 0, 0)
+}
+
+/* 스크롤바 커스텀 */
+.rooms-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rooms-list::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 0;
+}
+
+.rooms-list::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+}
+
+/* 릴레이 대기방 */
+.teams-equal{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 0.8vw, 12px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 0;
+}
+.team{
+  display: flex;
+  flex-direction: row;
+  gap: clamp(2px, 0.8vw, 12px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+
+.profile {
+  width: 56px;    
+  aspect-ratio: 1 / 1;         /* 정사각형 유지 */
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+}
+@media (min-width: 768px) {
+  .profile { width: 72px; }     /* md */
+}
+@media (min-width: 1024px) {
+  .profile { width: 80px; }     /* lg */
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 개인전 대기방 */
+.solo-ffa{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 0.8vw, 12px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 0;
+}
+.solo-slot{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2px, 0.8vw, 4px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 0;
+}

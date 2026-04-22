@@ -1,0 +1,51 @@
+.algorithm-result-modal .reset-modal {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.algorithm-result-modal  .reset-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: none;
+}
+
+.algorithm-result-modal  .reset-modal .modal-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.algorithm-result-modal  .reset-modal .modal-btn button {
+    padding: 4px 12px;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+.algorithm-result-modal  .reset-modal .confrim {
+    background-color: var(--btn-fail-color);
+}
+
+.algorithm-result-modal  .reset-modal .title{
+    font-size: 16px;
+}
+
+.algorithm-result-modal  .reset-modal .content{
+    font-size: 14px;
+}
+
+.algorithm-result-modal button {
+    font-size: 18px;
+    
+}

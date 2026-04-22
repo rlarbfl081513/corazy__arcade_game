@@ -1,0 +1,123 @@
+/* .algorithm-result-modal .btn {
+} */
+
+.algorithm-result-modal,
+.test-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  width: 500px;
+  min-width: 500px;
+  max-width: 600px;
+  max-height: 60vh;
+  background: #fff;
+  border-radius: 14px;
+}
+
+/* 채점 결과 모달 */
+
+.algorithm-result-modal .back-btn {
+  background-color: #fff;
+}
+
+.algorithm-result-modal .result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.algorithm-result-modal .result-box img {
+  width: 300px;
+  max-width: 300px !important;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.algorithm-result-modal .words {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  margin: 0;
+}
+
+.algorithm-result-modal .result-message {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.algorithm-result-modal .btn-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* 성공 스타일 */
+.algorithm-result-modal .result-box.success .words {
+  color: #4caf50;
+}
+
+.algorithm-result-modal .result-box.success .result-message {
+  color: #2e7d32;
+}
+
+/* 실패 스타일 */
+.algorithm-result-modal .result-box.fail .words {
+  color: #f44336;
+}
+
+.algorithm-result-modal .result-box.fail .result-message {
+  color: #c62828;
+}
+
+/* 진행률 바 */
+.progress-bar-container {
+  width: 100%;
+  max-width: 400px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.loading-section img {
+  width: 200px;
+  max-width: 200px !important;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.loading-section p {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}

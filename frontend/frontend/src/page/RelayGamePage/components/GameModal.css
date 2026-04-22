@@ -1,0 +1,74 @@
+/* 릴레이 게임 모달 스타일 */
+
+.game-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  min-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.game-modal .modal-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.game-modal .modal-icon.success {
+  color: #4CAF50;
+}
+
+.game-modal .modal-icon.warning {
+  color: #ff9800;
+}
+
+.game-modal .modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.game-modal .modal-message {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* 게임 종료 모달 */
+.game-end-modal .modal-confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.game-end-modal .modal-confirm-btn:hover {
+  background-color: #45a049;
+}
+
+/* 제출 결과 모달 (오답) */
+.submit-result-modal {
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

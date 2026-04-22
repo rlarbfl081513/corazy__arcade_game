@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  coa-auth-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coa-auth-server
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    env_file:
+      - .env
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-default}
+    restart: unless-stopped
+    networks:
+      - coa-network
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:8080/api-docs || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  coa-network:
+    driver: bridge

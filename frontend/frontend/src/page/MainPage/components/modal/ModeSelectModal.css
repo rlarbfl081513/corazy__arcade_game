@@ -1,0 +1,59 @@
+
+.mode-select-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #000000;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.header-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000000;
+  padding: 12px;
+}
+
+.icon-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+.mode-select-modal .title {
+    font-size: 18px;
+}
+
+.mode-select-modal .mode-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px 40px 50px 40px; 
+  gap: 30px;
+}
+
+.mode-select-modal .mode-list button {
+    font-size: 16px;
+    padding: 20px;
+    transition: all 0.15s ease;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    border-radius: 6px;
+}
+
+.mode-select-modal .mode-list button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.mode-select-modal .mode-list button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #000;
+}
