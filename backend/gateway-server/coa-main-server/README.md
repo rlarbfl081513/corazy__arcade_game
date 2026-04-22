@@ -32,12 +32,12 @@ COrazy Arcade API Gateway 서버
 SERVER_PORT=8080
 
 # Redis
-REDIS_HOST=15.165.231.215
+REDIS_HOST=your-redis-host
 REDIS_PORT=6379
 REDIS_DB=0
 
 # CORS
-CORS_ALLOWED_ORIGINS=https://corazyarcade.kro.kr
+CORS_ALLOWED_ORIGINS=https://your-domain
 
 # Service Endpoints (예시)
 AUTH_SERVICE_URL=http://auth-server:8080

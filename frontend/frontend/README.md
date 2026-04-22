@@ -39,7 +39,7 @@ VITE_API_BASE_URL=https://corazyarcade.kro.kr
 VITE_WS_URL=wss://corazyarcade.kro.kr
 
 # OAuth
-VITE_GOOGLE_CLIENT_ID=293475120765-0dvroo8fncpo40enbf7ahavle7s9ejo.apps.googleusercontent.com
+VITE_GOOGLE_CLIENT_ID=your-google-client-id
 
 # App
 VITE_APP_NAME=COrazy Arcade
