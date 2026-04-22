@@ -1,212 +1,202 @@
 # COrazy Arcade
 
-알고리즘 타이핑과 릴레이 코딩으로 즐기는 코딩 게임 플랫폼
+> 알고리즘 코드를 타이핑하고, 팀원과 릴레이로 풀어내는 코딩 게임 플랫폼
 
-## 프로젝트 개요
+**프로젝트 기간**: 2025.10 - 2025.11 (6주) · **팀 구성**: 6인 (Backend 3, Frontend 2, Infra 1)
 
-COrazy Arcade는 알고리즘 학습을 게임처럼 즐겁게 할 수 있는 웹 기반 플랫폼입니다.
-혼자서 코드를 타이핑하며 연습하는 '반아쓰기' 모드와 팀원들과 협력하는 '릴레이 코딩' 모드를 제공합니다.
+---
 
-**프로젝트 기간**: 2025년 10월 - 11월 (6주)
-**배포 URL**: https://corazyarcade.kro.kr
+## 담당 역할
 
-## 주요 기능
+**전체 UI/UX 디자인 + 프론트엔드 개발** (프로젝트 기여 비중 약 20%)
 
-### 1. 반아쓰기 (싱글 플레이)
-- 알고리즘 코드를 정확하게 타이핑하며 학습
-- 언어 선택: Python, Java, JavaScript, C++
-- 알고리즘 카테고리: Greedy, DP, Graph, Tree 등
-- 실시간 타이핑 속도(CPM) 및 정확도 측정
-- 전체 사용자 대비 상위 순위 표시
+| 구분 | 담당 내역 |
+|------|----------|
+| 디자인 | 전체 서비스 디자인 시스템, 모든 페이지 UI/UX 설계 |
+| 메인 로비 | 실시간 랭킹, 방 목록, 전체 채팅, 로그인 플로우 |
+| 반아쓰기 모드 | Monaco Editor 커스터마이징, 타이핑 검증 로직, CPM 측정 |
+| 릴레이 코딩 | 멀티플레이 UI, 참가자 카드, 턴 표시, 게임 결과 모달 |
+| 공통 컴포넌트 | 토스트 시스템, 설정 모달, BGM 플레이어, 코드 에디터 래퍼 |
+| 인증 | Google OAuth 리다이렉트 처리, 토큰 갱신 인터셉터 |
 
-### 2. 릴레이 코딩 (멀티플레이)
-- 2-4명이 팀을 이루어 실시간 협업
-- 릴레이 방식으로 코드를 작성하며 문제 해결
-- 실시간 채팅을 통한 전략 회의
-- WebSocket 기반 동시 편집 및 실시간 동기화
-- 게임 종료 후 기여도, 타이핑 속도 등 통계 제공
-
-### 3. 메인 대기실
-- 실시간 랭킹 시스템 (CPM 기준)
-- 대기 중인 방 목록 및 입장
-- 전체 채팅 기능
-- 게스트 로그인 / Google OAuth 소셜 로그인
-
-### 4. 코드 에디터
-- Monaco Editor 기반 고품질 코드 편집
-- 문법 하이라이팅 및 자동 완성
-- 테스트 케이스 실행 및 결과 확인
-- 실시간 채점 시스템
+---
 
 ## 기술 스택
 
 ### Frontend
-- **Framework**: React 19.1.1
-- **Build Tool**: Vite 7.1.7
-- **State Management**: Zustand 5.0.2
-- **Routing**: React Router DOM 7.9.5
-- **Styling**: TailwindCSS 4.1.16
-- **Game Engine**: Phaser 3.90.0
-- **Code Editor**: Monaco Editor
-- **WebSocket**: Socket.io Client, STOMP
+![React](https://img.shields.io/badge/React-19.1.1-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.1.7-646CFF?logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.16-06B6D4?logo=tailwindcss&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-5.0.2-orange)
+![Socket.io](https://img.shields.io/badge/Socket.io-4.8.1-010101?logo=socketdotio)
 
-### Backend
-- **Framework**: Spring Boot 3.4.x ~ 3.5.x
-- **Language**: Java 21
-- **API Gateway**: Spring Cloud Gateway
-- **Database**: MySQL 8.x (AWS RDS)
-- **Cache**: Redis 7.x
-- **Authentication**: Spring Security, OAuth2, JWT
-- **WebSocket**: STOMP, Socket.io
+| 분류 | 기술 |
+|------|------|
+| 코드 에디터 | Monaco Editor |
+| 실시간 통신 | Socket.io Client, STOMP over SockJS, Native WebSocket |
+| 상태 관리 | Zustand + Immer |
+| 라우팅 | React Router DOM 7.9.5 |
+| 레이아웃 | react-resizable-panels |
+| 수식 렌더링 | KaTeX |
 
-### Compile Infrastructure
-- **Compile Server**: FastAPI (Python), MySQL, RabbitMQ, Redis
-- **Compile Worker**: Node.js, Docker, RabbitMQ
-- **Container**: Docker (샌드박스 환경)
-- **Storage**: AWS S3
+### Backend / Infra (협업)
+`Spring Boot 3.5` · `Spring Cloud Gateway` · `Node.js` · `FastAPI` · `MySQL` · `Redis` · `RabbitMQ` · `Docker` · `AWS (EC2, RDS, S3)` · `Nginx` · `GitLab CI/CD`
 
-### Infrastructure
-- **Cloud**: AWS (EC2, RDS, S3)
-- **Web Server**: Nginx
-- **Reverse Proxy**: Nginx
-- **Container**: Docker
-- **CI/CD**: GitLab CI/CD
-- **Domain**: corazyarcade.kro.kr
+---
+
+## 주요 구현 내용
+
+### 1. WebSocket 프로토콜 3종 분리 운용
+
+릴레이 게임(STOMP), 채점 스트리밍(Raw WebSocket), 채팅(Socket.IO)에 서로 다른 프로토콜을 사용했습니다.
+
+> **왜 분리했나**: 릴레이 게임은 `/topic/rooms/{id}` 형태의 토픽 기반 pub/sub이 필요했고, 채점 결과는 100개 테스트케이스를 실시간으로 밀어줘야 해서 오버헤드 없는 Raw WebSocket이 적합했습니다. 채팅은 자동 재연결과 presence 이벤트가 중요해 Socket.IO를 선택했습니다.
+
+```
+릴레이 게임 상태 동기화  → STOMP over SockJS  (토픽 구독 방식)
+채점 진행률 실시간 수신  → Native WebSocket   (저지연 스트리밍)
+로비/방 채팅            → Socket.IO          (자동재연결, 입퇴장 이벤트)
+```
+
+---
+
+### 2. Zustand + Immer로 릴레이 게임 상태 중앙화
+
+WebSocket 이벤트(USER_JOINED, TURN_CHANGE, CODE_UPDATE 등)를 하나의 스토어에서 처리합니다.
+
+> **왜 Zustand를 선택했나**: WebSocket 이벤트마다 참가자 목록, 현재 턴, 공유 코드 등 중첩 객체를 동시에 바꿔야 해서 Redux의 불변 업데이트 보일러플레이트가 부담스러웠습니다. Immer 미들웨어를 쓰면 `state.participants[id].isReady = true` 같은 직접 할당이 가능해 이벤트 핸들러 코드가 훨씬 간결해졌습니다.
+
+```js
+// handleEvent() 에서 WebSocket 이벤트 → 상태 분기 처리
+// 자신의 코드 업데이트는 무시해 로컬 편집 덮어쓰기 방지
+if (myUserId !== codeData.userId) set(state => { state.sharedCode = codeData.code })
+```
+
+---
+
+### 3. Monaco Editor 커스터마이징 — 반아쓰기 모드
+
+`constrained-editor-plugin`으로 문제 서명 라인을 잠그고, 타이핑한 문자를 줄별로 검증해 색상 피드백을 줍니다.
+
+> **왜 constrained editor를 썼나**: 사용자가 함수 서명이나 완성된 라인을 건드리면 게임이 성립되지 않습니다. Monaco의 기본 편집 제한 API는 세밀한 구간 잠금이 어려워 별도 플러그인을 적용했습니다. 잠금 상태에서도 문법 하이라이팅은 그대로 유지됩니다.
+
+---
+
+### 4. Axios 인터셉터 — 토큰 갱신 큐 패턴
+
+Access Token 만료 시 동시에 여러 요청이 들어와도 refresh를 한 번만 호출합니다.
+
+> **왜 큐 패턴이 필요했나**: 401 응답마다 무조건 refresh를 시도하면, 동시 요청이 5개일 때 refresh가 5번 연쇄 호출되고 토큰이 꼬입니다. 첫 번째 요청만 refresh를 실행하고 나머지는 큐에 대기시킨 뒤 새 토큰으로 일괄 재시도하는 방식으로 해결했습니다.
+
+---
+
+### 5. 오디오 객체 풀링 — 타이핑 효과음
+
+8개의 Audio 인스턴스를 미리 생성하고 순환 재사용합니다.
+
+> **왜 풀링을 썼나**: 타이핑 속도가 빠를 때 keystroke마다 `new Audio()`를 생성하면 GC 부하로 프레임이 끊깁니다. 인스턴스를 재사용하면 메모리 할당 없이 `.currentTime = 0; .play()`만 호출하면 돼 반응성이 유지됩니다.
+
+---
+
+### 6. 분할 화면(Split Panel) + 문제 렌더링
+
+`react-resizable-panels`로 문제 설명 / 에디터 / 실행 결과 영역을 드래그로 조절할 수 있고, KaTeX로 알고리즘 수식을 렌더링합니다.
+
+> **왜 resizable panel을 썼나**: 코딩 문제를 풀 때 화면 비율 선호가 개인마다 달라서 고정 레이아웃은 불편합니다. 드래그로 자유롭게 조절하면 문제를 넓게 보거나 에디터를 넓게 쓸 수 있습니다.
+
+---
+
+### 7. Google OAuth 2단계 인증 플로우
+
+신규 사용자는 `sessionToken`을 거쳐 닉네임 입력 후 JWT를 발급받고, 기존 사용자는 코드 교환만으로 바로 로그인합니다.
+
+> **왜 sessionToken을 중간에 쓰나**: Google 인가 코드를 바로 JWT로 교환하면 코드 재사용 공격에 취약합니다. 서버가 단일 사용 가능한 sessionToken을 발급해 닉네임 입력 단계에서 소진시키는 방식으로 크리덴셜 스터핑을 차단합니다.
+
+---
+
+## 실행 방법
+
+### 사전 요구사항
+
+- Node.js 20.x
+- Java 21
+- Python 3.x
+- Docker & Docker Compose
+- MySQL 8.x, Redis 7.x
+
+### 환경 변수 설정
+
+각 서버 디렉토리의 `.env.example`을 복사해 `.env`를 만들고 값을 채웁니다.
+
+```bash
+cp .env.example .env
+```
+
+자세한 환경 변수 목록은 [포팅 매뉴얼](exec/README.md)을 참고하세요.
+
+### 프론트엔드
+
+```bash
+cd frontend/frontend
+npm install
+npm run dev
+# http://localhost:5173
+```
+
+### 백엔드 (Docker)
+
+```bash
+# 예: Auth Server
+cd backend/auth-server/coa-main-server
+docker build -t coa-auth:latest .
+docker run -d -p 8080:8080 --env-file .env coa-auth:latest
+```
+
+### 메시지 큐 (RabbitMQ + Redis)
+
+```bash
+cd infra/message-setting/message-queue-setting
+docker compose up -d
+```
+
+---
 
 ## 시스템 아키텍처
 
 ```
-[Client (React)]
-      ↓
-[API Gateway (Spring Cloud Gateway)]
-      ↓
-      ├─→ [Auth Server] - 인증/인가
-      ├─→ [Chat Server] - 실시간 채팅
-      ├─→ [Snippet Server] - 문제/스니펫 관리
-      ├─→ [Compile Server] - 코드 컴파일 요청
-      └─→ [Compile Worker] - 실제 코드 실행 및 채점
+[React Client]
+      │
+      ▼
+[API Gateway (Spring Cloud Gateway :8080)]
+      │
+      ├──▶ Auth Server     — JWT, Google OAuth2
+      ├──▶ Chat Server     — Socket.IO 실시간 채팅
+      ├──▶ Snippet Server  — 알고리즘 문제/템플릿 관리
+      └──▶ Compile Server  — 코드 채점 요청 (FastAPI)
+                │
+           [RabbitMQ]
+                │
+                ▼
+         Compile Worker   — Docker 샌드박스 실행 · 채점
+                │
+               [S3] — 테스트케이스 저장
 ```
+
+---
 
 ## 프로젝트 구조
 
 ```
-master/
-├── backend/              # 백엔드 서버들
-│   ├── auth-server/      # 인증/인가 서버 (Spring Boot)
-│   ├── gateway-server/   # API Gateway (Spring Cloud)
-│   ├── chat-server/      # 채팅 서버 (Node.js)
-│   ├── snippet-server/   # 문제 관리 서버 (Spring Boot)
-│   ├── compile-server/   # 컴파일 서버 (FastAPI)
-│   └── compile-worker/   # 컴파일 워커 (Node.js)
-├── frontend/             # 프론트엔드
-│   └── frontend/         # React 애플리케이션
-├── infra/                # 인프라 설정
-├── exec/                 # 포팅 매뉴얼 및 시연 자료
-│   ├── README.md         # 포팅 매뉴얼
-│   └── screenshot/       # 시연 스크린샷
-└── README.md             # 프로젝트 소개 (본 문서)
+corazy_arcade/
+├── backend/
+│   ├── auth-server/       # Spring Boot — 인증/인가, OAuth2, JWT
+│   ├── gateway-server/    # Spring Cloud Gateway — 라우팅
+│   ├── chat-server/       # Node.js + Socket.IO — 실시간 채팅
+│   ├── snippet-server/    # Spring Boot + JPA — 문제 관리
+│   ├── compile-server/    # FastAPI — 채점 요청 오케스트레이션
+│   └── compile-worker/    # Node.js — Docker 샌드박스 채점
+├── frontend/
+│   └── frontend/          # React + Vite 클라이언트
+├── infra/                 # RabbitMQ + Redis Docker Compose
+└── exec/                  # 포팅 매뉴얼, 시연 자료
 ```
-
-## 빠른 시작
-
-### 사전 요구사항
-- Docker & Docker Compose
-- Node.js 20.x
-- Java 21
-- Python 3.x
-- MySQL 8.x
-- Redis 7.x
-
-### 로컬 개발 환경 설정
-
-1. **저장소 클론**
-```bash
-git clone https://lab.ssafy.com/s13-final/S13P31A705.git
-cd S13P31A705
-```
-
-2. **환경 변수 설정**
-
-각 서버 디렉토리에 `.env` 파일을 생성하고 필요한 환경 변수를 설정합니다.
-자세한 내용은 [포팅 매뉴얼](exec/README.md)을 참조하세요.
-
-3. **서버 실행**
-
-각 서버는 Docker로 실행하거나 로컬에서 직접 실행할 수 있습니다.
-
-```bash
-# Frontend
-cd frontend/frontend
-npm install
-npm run dev
-
-# Backend 서버 (예: Auth Server)
-cd backend/auth-server/coa-main-server
-./gradlew bootRun
-
-# Compile Server
-cd compile-server/coa-compile-server
-pip install -r requirements.txt
-python -m app.main
-```
-
-자세한 실행 방법은 각 서버의 README.md를 참조하세요.
-
-## 주요 API
-
-### 인증 API
-- `POST /auth/login` - 로그인
-- `POST /auth/google` - Google OAuth 로그인
-- `POST /auth/refresh` - 토큰 갱신
-
-### 문제 API
-- `GET /api/problems` - 문제 목록 조회
-- `GET /api/problems/{id}` - 문제 상세 조회
-
-### 컴파일 API
-- `POST /api/compile` - 코드 컴파일 및 실행
-- `GET /api/compile/result/{id}` - 컴파일 결과 조회
-
-### WebSocket API
-- `/ws/chat` - 실시간 채팅
-- `/ws/game` - 게임 상태 동기화
-- `/ws/compile` - 컴파일 결과 실시간 수신
-
-## 배포
-
-프로젝트는 Docker 컨테이너로 배포되며, Nginx를 통해 서비스됩니다.
-
-배포 방법은 [포팅 매뉴얼](exec/README.md)을 참조하세요.
-
-## 문서
-
-- [포팅 매뉴얼](exec/README.md) - 빌드, 배포, 환경 변수 상세 설명
-- [시연 시나리오](exec/README.md#4-시연-시나리오) - 기능별 시연 가이드
-- [Frontend README](frontend/frontend/README.md) - 프론트엔드 개발 가이드
-- [Backend README](backend/README.md) - 백엔드 서버 개요
-- [Compile Server README](compile-server/coa-compile-server/README.md) - 컴파일 서버 상세
-
-## 팀원
-
-SSAFY 13기 자율 프로젝트 팀 A705
-
-| 역할 | 이름 | 담당 |
-|------|------|------|
-| Frontend, Design | 김규리 | React, UX/UI 디자인 |
-| Frontend | 천수현 | React, 특수효과 디자인 |
-| Backend | 이우진 | 릴레이 서버 고도화 , 채점 서버 구현 및 최적화 |
-| Backend | 이지유 | 인증/인가, 회원 관리 |
-| Frontend, Backend | 한강섭 | React 구현, 릴레이 서버 |
-| Infra | 오승언 | AWS, Docker, CI/CD, k8s, 채팅 시스템 |
-
-## 라이선스
-
-이 프로젝트는 교육 목적으로 제작되었습니다.
-
-## 기여
-
-버그 리포트 및 기능 제안은 GitLab Issues를 이용해주세요.
-
----
-
-**COrazy Arcade** - 코딩을 게임처럼, 학습을 즐겁게!
