@@ -35,8 +35,8 @@ React와 Vite를 기반으로 한 COrazy Arcade의 웹 클라이언트입니다.
 
 ```env
 # API 엔드포인트
-VITE_API_BASE_URL=https://corazyarcade.kro.kr
-VITE_WS_URL=wss://corazyarcade.kro.kr
+VITE_API_BASE_URL=https://your-domain.com
+VITE_WS_URL=wss://your-domain.com
 
 # OAuth
 VITE_GOOGLE_CLIENT_ID=your-google-client-id

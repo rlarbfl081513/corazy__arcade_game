@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://localhost:5173", // 로컬 프론트엔드
                         "http://localhost:8080", // 로컬 게이트웨이
-                        "https://corazyarcade.kro.kr" // 기존 배포 도메인
+                        "${CORS_ALLOWED_ORIGIN}"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")

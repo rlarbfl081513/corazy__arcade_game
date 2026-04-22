@@ -193,8 +193,8 @@ EXECUTION_TIMEOUT=30000
 
 ```env
 # API 엔드포인트
-VITE_API_BASE_URL=https://corazyarcade.kro.kr
-VITE_WS_URL=wss://corazyarcade.kro.kr
+VITE_API_BASE_URL=https://your-domain.com
+VITE_WS_URL=wss://your-domain.com
 
 # OAuth 설정
 VITE_GOOGLE_CLIENT_ID=your-google-client-id
@@ -427,18 +427,18 @@ cors:
 
 **용도**: Docker 이미지 레지스트리
 
-**계정**: suee97
+**계정**: your-dockerhub-username
 
 **이미지 목록**:
 
-- `suee97/coa-auth:latest`
-- `suee97/coa-gateway:latest`
-- `suee97/coa-relay:latest`
-- `suee97/coa-chat:latest`
-- `suee97/coa-ranking:latest`
-- `suee97/coa-snippet:latest`
-- `suee97/coa-compile:latest`
-- `suee97/coa-frontend:latest`
+- `your-dockerhub-username/coa-auth:latest`
+- `your-dockerhub-username/coa-gateway:latest`
+- `your-dockerhub-username/coa-relay:latest`
+- `your-dockerhub-username/coa-chat:latest`
+- `your-dockerhub-username/coa-ranking:latest`
+- `your-dockerhub-username/coa-snippet:latest`
+- `your-dockerhub-username/coa-compile:latest`
+- `your-dockerhub-username/coa-frontend:latest`
 
 ---
 
@@ -508,7 +508,7 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ![로그인 화면](./screenshot/01_로그인_화면_닉네임입력과_Google로그인.png)
 
-- **URL**: `https://corazyarcade.kro.kr`
+- **URL**: `https://your-domain.com`
 - **설명**: 메인 로그인 화면에서 닉네임을 입력하거나 Google 로그인을 선택할 수 있습니다.
 - **동작**:
   - 닉네임 입력란에 2-20자의 닉네임 입력
@@ -526,7 +526,7 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ![메인 대기실](./screenshot/03_메인_대기실_랭킹과_채팅_방만들기.png)
 
-- **URL**: `https://corazyarcade.kro.kr/main`
+- **URL**: `https://your-domain.com/main`
 - **설명**: 로그인 성공 후 메인 대기실로 이동합니다.
 - **화면 구성**:
   - **좌측**: 캐릭터 프로필 및 랭킹 (CPM 기준)
@@ -552,7 +552,7 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ![Greedy 알고리즘 코딩](./screenshot/05_Greedy_알고리즘_코딩화면_초기상태.png)
 
-- **URL**: `https://corazyarcade.kro.kr/dictation?lang=1&algo=5`
+- **URL**: `https://your-domain.com/dictation?lang=1&algo=5`
 - **설명**: 코드 타이핑 연습 화면입니다.
 - **화면 구성**:
   - **중앙**: 코드 에디터 (완성해야 할 코드가 표시됨)
@@ -580,7 +580,7 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ![게임 방 생성](./screenshot/07_시연데스트방_대기실_호스트_1인_대기중.png)
 
-- **URL**: `https://corazyarcade.kro.kr/room/{room-id}`
+- **URL**: `https://your-domain.com/room/{room-id}`
 - **설명**: 방 만들기를 통해 멀티플레이 게임 방을 생성합니다.
 - **화면 구성**:
   - **좌측**: 참가자 목록 (HOST 표시)
@@ -604,7 +604,7 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ![전략 회의 시간](./screenshot/09_스케이트연습_게임시작전_전략회의시간_29초.png)
 
-- **URL**: `https://corazyarcade.kro.kr/game/{room-id}`
+- **URL**: `https://your-domain.com/game/{room-id}`
 - **설명**: 게임 시작 전 30초 동안 전략 회의 시간이 주어집니다.
 - **화면 구성**:
   - **좌측**: 문제 설명 (스케이트 연습 - Easy, Python, 알고리즘)
@@ -694,4 +694,4 @@ mysql -u <username> -p <database_name> < snippet-server/coa-snippet-server/migra
 
 ## 기여자
 
-SSAFY 13기 자율 프로젝트 팀 A705
+팀 구성원

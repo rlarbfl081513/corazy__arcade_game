@@ -155,7 +155,7 @@ s3://bucket-name/problems/1000/
 **업로드 방법**:
 ```bash
 cd test/s3-sample-data
-aws s3 sync problems/ s3://corazyarcade-code-dataset/problems/
+aws s3 sync problems/ s3://your-s3-bucket-name/problems/
 ```
 
 **구 JSON 형식** (하위 호환성):

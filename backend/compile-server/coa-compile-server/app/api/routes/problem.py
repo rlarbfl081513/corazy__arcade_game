@@ -100,7 +100,7 @@ async def get_problem_info(
 
     - **problem_number**: 문제 번호
 
-    S3 버킷 `corazyarcade-code-dataset`의 `problems/{문제번호}/` 디렉토리에서
+    S3 버킷의 `problems/{문제번호}/` 디렉토리에서
     `info.json`과 `testcases.json`을 읽어 반환합니다.
 
     ## 반환 데이터:

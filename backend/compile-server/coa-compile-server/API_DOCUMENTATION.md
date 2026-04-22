@@ -953,7 +953,7 @@ function ProblemList() {
 문제의 상세 정보를 S3에서 가져오는 엔드포인트입니다.
 
 #### 기능 설명
-- AWS S3 버킷 `corazyarcade-code-dataset`에서 문제 정보 조회
+- AWS S3 버킷 `your-s3-bucket-name`에서 문제 정보 조회
 - `problems/{문제번호}/info.json`: 문제 설명, 입출력 설명, 제한사항
 - `problems/{문제번호}/testcases.json`: 테스트케이스 목록
 - `problems/{문제번호}/images/`: 문제에 사용된 이미지 파일들
@@ -1119,7 +1119,7 @@ function renderLatex(text) {
 
 // 이미지 참조를 실제 URL로 변환하는 함수
 function processImages(text, problemNumber, images) {
-  const baseUrl = `https://corazyarcade-code-dataset.s3.ap-northeast-2.amazonaws.com/problems/${problemNumber}/images`;
+  const baseUrl = `https://your-s3-bucket-name.s3.ap-northeast-2.amazonaws.com/problems/${problemNumber}/images`;
 
   return text.replace(/\[image:([^\]]+)\]/g, (match, filename) => {
     if (images.includes(filename)) {
@@ -1218,7 +1218,7 @@ function ProblemDetail({ problemNumber }) {
     });
 
     // 이미지 URL 변환
-    const baseUrl = `https://corazyarcade-code-dataset.s3.ap-northeast-2.amazonaws.com/problems/${problemNumber}/images`;
+    const baseUrl = `https://your-s3-bucket-name.s3.ap-northeast-2.amazonaws.com/problems/${problemNumber}/images`;
     processed = processed.replace(/\[image:([^\]]+)\]/g, (match, filename) => {
       if (images.includes(filename)) {
         return `<img src="${baseUrl}/${filename}" alt="${filename}" class="problem-image" />`;
@@ -1366,7 +1366,7 @@ const { submissionUuid, problemInfo, ws } = await submitWithProblemInfo(
 #### S3 파일 구조
 
 ```text
-corazyarcade-code-dataset/
+your-s3-bucket-name/
 └── problems/
     └── 1000/
         ├── info.json          # 문제 기본 정보
@@ -1379,9 +1379,9 @@ corazyarcade-code-dataset/
 
 #### 이미지 URL 규칙
 
-- **S3 Base URL**: `https://corazyarcade-code-dataset.s3.ap-northeast-2.amazonaws.com`
+- **S3 Base URL**: `https://your-s3-bucket-name.s3.ap-northeast-2.amazonaws.com`
 - **이미지 경로**: `/problems/{problemId}/images/{filename}`
-- **전체 URL 예시**: `https://corazyarcade-code-dataset.s3.ap-northeast-2.amazonaws.com/problems/1000/images/figure1.png`
+- **전체 URL 예시**: `https://your-s3-bucket-name.s3.ap-northeast-2.amazonaws.com/problems/1000/images/figure1.png`
 
 #### 오류 응답
 
