@@ -1,5 +1,5 @@
 # COrazy Arcade
-![릴레이 화면](./assets/co-main.png)
+![릴레이 화면](./assets/co-cover.png)
 
 > 알고리즘 코드를 타이핑하고, 팀원과 릴레이로 풀어내는 코딩 게임 플랫폼
 
