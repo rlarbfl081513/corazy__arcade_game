@@ -42,6 +42,22 @@
 `Spring Boot 3.5` · `Spring Cloud Gateway` · `Node.js` · `FastAPI` · `MySQL` · `Redis` · `RabbitMQ` · `Docker` · `AWS (EC2, RDS, S3)` · `Nginx` · `GitLab CI/CD`
 
 ---
+## 주요 기능 및 화면 설명
+### 1. 메인 화면
+- 개인 프로필
+- 전체 랭킹
+- 릴레이 게임방 목록
+- 전체 채팅창
+![메인 화면](./assets/co-main.gif)
+### 2. 릴레이 게임 풀이
+최대 4명의 친구들과 릴레이로 알고리즘을 협력하여 푸는 기능
+
+![릴레이 화면](./assets/co-relay-solve.gif)
+
+### 3. 알고리즘 따라쓰기
+알고리즘에 익숙하지 않는 입문자를 위한 기초 알고리즘을 따라칠 수 있는 기능
+![따라쓰기 화면](./assets/co-dictation.gif)
+---
 
 ## 주요 구현 내용
 
