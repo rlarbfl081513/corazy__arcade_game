@@ -3,7 +3,7 @@
 > 알고리즘 코드를 타이핑하고, 팀원과 릴레이로 풀어내는 코딩 게임 플랫폼
 
 **프로젝트 기간**: 2025.10 - 2025.11 (6주) · **팀 구성**: 6인 (Backend 3, Frontend 2, Infra 1)
-
+시연영상 [https://youtu.be/NX_4ZbExZ_4?si=uj7CizLvJFMxP4hL]
 ---
 
 ## 담당 역할
